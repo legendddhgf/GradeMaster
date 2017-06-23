@@ -10,13 +10,14 @@
 #include <algorithm>
 #include <tuple>
 
-#include "BitVec.h"
+#include "BitVec.h" // TODO: make this
 
 using namespace std;
 
 typedef struct GraderTask {
-  
-  unordered_map<string, BitVec *>; // the sections the grader is responsible for
+  uint8_t numSections;
+  //TODO: should this be a vector or hashmap of bitvectors (one per assignment)
+  BitVec_s *tasks; // sections grader is tasked with have that bit set
 } GraderTask_s
 
 typedef struct GraderInfo {
