@@ -1,5 +1,5 @@
-#ifndef _GRADERLOGIN_H_
-#define _GRADERLOGIN_H_
+#ifndef _GRADERINFO_H_
+#define _GRADERINFO_H_
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -14,16 +14,11 @@
 
 using namespace std;
 
-typedef struct GraderTask {
-  uint8_t numSections;
-  //TODO: should this be a vector or hashmap of bitvectors (one per assignment)
-  BitVec_s *tasks; // sections grader is tasked with have that bit set
-} GraderTask_s
-
+// each grader gets assigned a variable of type GraderInfo_s
 typedef struct GraderInfo {
   string name; // the name of the grader
   uint8_t id; // uniquely identify every grader for a given assignemnt (max 255)
-  GraderTask_s task; // task struct for grader
+  BitVec_s *tasks; // 1 is set for every section this grader is responsible for
 } GraderInfo_s
 
 #endif
