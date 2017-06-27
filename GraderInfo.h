@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
 #include <string>
 #include <vector>
@@ -10,15 +11,21 @@
 #include <algorithm>
 #include <tuple>
 
-#include "BitVec.h" // TODO: make this
+#include "BitVec.h"
 
 using namespace std;
 
 // each grader gets assigned a variable of type GraderInfo_s
 typedef struct GraderInfo {
-  string name; // the name of the grader
-  uint8_t id; // uniquely identify every grader for a given assignemnt (max 255)
-  BitVec_s *tasks; // 1 is set for every section this grader is responsible for
-} GraderInfo_s
+  string name_long; // the full name of the grader
+  string name_short; // the shortened name of the grader
+  BitVec_s *secs; // 1 is set for every section this grader is responsible for
+  GraderInfo(string, string, uint16_t); // create graderinfo instance for 'name'
+  ~GraderInfo(void); // delete all memory associated with the grader instance
+  string getNameLong(void); // returns the long name stored for this grader
+  string getNameShort(void); // returns the short name stored for this grader
+  bool checkSecs(uint16_t secIndex); // returns whether the grader responsible
+  bool specSecs(uint64_t mask); // allows specifcation of up to 64 sections
+} GraderInfo_s;
 
 #endif

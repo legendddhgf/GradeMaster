@@ -13,6 +13,7 @@ typedef struct BitVec {
   ~BitVec(); // deletes all data associated with this BitVec
   uint8_t push(uint8_t bit); // pushes bit (bit & 1) on end of vector
   uint8_t pop(void); // pops bit off the end of the vector
+  uint8_t maskSpec(uint64_t mask); // sets the vector to reflect mask
   uint8_t set(uint16_t index); // sets bit (index) of vec
   uint8_t clr(uint16_t index); // clrs bit (index) of vec
   uint8_t get(uint16_t index); // gets bit (index) of vec

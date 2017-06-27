@@ -1,20 +1,20 @@
 MAINSRC = GradeMaster.cpp
-COMPONENTS = BitVec GraderLogin
-COMPONENTSSRC = ${COMPONENTS: %=%.c}
-COMPONENTSOBJ = ${COMPONENTS: %=%.o}
-COMPILESRC = ${MAINSRC} #TODO: add COMPONENTSRC when ready
-COMPILEOBJ = ${MAINSRC: %.c=%.o}
+COMPONENTS = BitVec GraderInfo
+COMPONENTSSRC = $(COMPONENTS:%=%.cpp)
+COMPONENTSOBJ = $(COMPONENTS:%=%.o)
+COMPILESRC = $(MAINSRC) $(COMPONENTSSRC)
+COMPILEOBJ = $(COMPILESRC:%.cpp=%.o)
 
 
 COMPILER = g++ -c
-COMPILERFLAGS = -Wall -Werror -ansi -pedantic -std=C++14
+COMPILERFLAGS = -Wall -Werror -ansi -pedantic -std=gnu++14
 LINKER = g++ -o
 LINKERFLAGS = -lm
 
 EXE = GradeMaster
 
-GradeMaster: ${COMPILESRC}
-	$(COMPILER) $(COMPILESRC)
+GradeMaster: $(COMPILESRC)
+	$(COMPILER) $(COMPILERFLAGS) $(COMPILESRC)
 	$(LINKER) $(EXE) $(LINKERFLAGS) $(COMPILEOBJ)
 
 clean:
