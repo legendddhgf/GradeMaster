@@ -25,11 +25,11 @@ string GraderInfo_s::getNameShort(void) {
 }
 
 // returns whether the grader responsible
-bool GraderInfo_s::checkSecs(uint16_t secIndex) {
+bool GraderInfo_s::checkSection(uint16_t secIndex) {
   return secs->get(secIndex) == 1 ? true : false;
 }
 
 // allows specifcation of up to 64 sections
-bool GraderInfo_s::specSecs(uint64_t mask) {
+bool GraderInfo_s::specifySections(uint64_t mask) {
   return secs->maskSpec(mask) == ~1 ? false : true;
 }

@@ -24,8 +24,8 @@ typedef struct GraderInfo {
   ~GraderInfo(void); // delete all memory associated with the grader instance
   string getNameLong(void); // returns the long name stored for this grader
   string getNameShort(void); // returns the short name stored for this grader
-  bool checkSecs(uint16_t secIndex); // returns whether the grader responsible
-  bool specSecs(uint64_t mask); // allows specifcation of up to 64 sections
+  bool checkSection(uint16_t secIndex); // returns whether the grader responsible
+  bool specifySections(uint64_t mask); // allows specifcation of up to 64 sections
 } GraderInfo_s;
 
 #endif
