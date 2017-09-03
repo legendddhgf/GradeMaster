@@ -15,7 +15,9 @@
 
 using namespace std;
 
-// each grader gets assigned a variable of type GraderInfo_s
+// each grader gets assigned a variable of type GraderInfo_s holding information
+// about their name, responsibilities and any other relevant details that may be
+// TBD
 typedef struct GraderInfo {
   string name_long; // the full name of the grader
   string name_short; // the shortened name of the grader

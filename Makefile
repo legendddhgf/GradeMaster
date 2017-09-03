@@ -1,5 +1,5 @@
 MAINSRC = GradeMaster.cpp
-COMPONENTS = BitVec GraderInfo StudentInfo
+COMPONENTS = BitVec GraderInfo StudentInfo AssignmentInfo
 COMPONENTSSRC = $(COMPONENTS:%=%.cpp)
 COMPONENTSOBJ = $(COMPONENTS:%=%.o)
 COMPILESRC = $(MAINSRC) $(COMPONENTSSRC)

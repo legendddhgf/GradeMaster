@@ -15,7 +15,9 @@
 
 using namespace std;
 
-// each student gets assigned a variable of type StudentInfo_s
+// each student gets assigned a variable of type StudentInfo_s containing
+// information about their name,their grades on all sections (ungraded by
+// default), and any other relevant details that may be TBD
 typedef struct StudentInfo {
   string name_long; // the full name of the student
   string name_short; // the shortened name of the student
