@@ -17,7 +17,20 @@ using namespace std;
 // the current grader / student being graded, etc. In general the details are
 // TBD
 typedef struct ConfigInfo {
-  uint16_t PLACE_HOLDER; // TODO: what will the config have?
+  // TODO: how about directory paths?
+  string asg_name;
+  string instance_grader_name;
+  uint16_t asg_maxpts; // a positive integer representing max possible pts
+  vector <GraderInfo_s *> asg_graders; // vector of pointers to info about a grader
+  vector <StudentInfo_s *> asg_students; // vector of pointers to info about a student
+  // map of the hash of section information to the id of the section
+  unordered_map <uint64_t, uint16_t> map_section_hash_to_id;
+  // In the case of asg_sections, the index is the id used in
+  // the "map_section_hash_to_id"
+  // this contains name, maxpts, list of pre-defined comment/percentage pairs
+  vector <tuple <string, uint16_t, vector <tuple<string, uint8_t>>>>
+    asg_sections;
+
   ConfigInfo(void); // TODO: what is the minimum we can give it?
   ~ConfigInfo(void);
 } ConfigInfo_s;
