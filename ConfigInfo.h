@@ -18,6 +18,7 @@ using namespace std;
 // TBD
 typedef struct ConfigInfo {
   // TODO: how about directory paths?
+  /* Get rid of this, everything will go in the hash map instead
   string asg_name;
   string instance_grader_name;
   uint16_t asg_maxpts; // a positive integer representing max possible pts
@@ -30,8 +31,11 @@ typedef struct ConfigInfo {
   // this contains name, maxpts, list of pre-defined comment/percentage pairs
   vector <tuple <string, uint16_t, vector <tuple<string, uint8_t>>>>
     asg_sections;
+    */
+  unordered_map <string, string> params; // map of all configuration parameters and their vals
 
-  ConfigInfo(void); // TODO: what is the minimum we can give it?
+  ConfigInfo(void);
+  ConfigInfo(FILE *);
   ~ConfigInfo(void);
 } ConfigInfo_s;
 
