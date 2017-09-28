@@ -19,24 +19,27 @@ using namespace std;
 typedef struct ConfigInfo {
   // TODO: how about directory paths?
   /* Get rid of this, everything will go in the hash map instead
-  string asg_name;
-  string instance_grader_name;
-  uint16_t asg_maxpts; // a positive integer representing max possible pts
-  vector <GraderInfo_s *> asg_graders; // vector of pointers to info about a grader
-  vector <StudentInfo_s *> asg_students; // vector of pointers to info about a student
+     string asg_name;
+     string instance_grader_name;
+     uint16_t asg_maxpts; // a positive integer representing max possible pts
+     vector <GraderInfo_s *> asg_graders; // vector of pointers to info about a grader
+     vector <StudentInfo_s *> asg_students; // vector of pointers to info about a student
   // map of the hash of section information to the id of the section
   unordered_map <uint64_t, uint16_t> map_section_hash_to_id;
   // In the case of asg_sections, the index is the id used in
   // the "map_section_hash_to_id"
   // this contains name, maxpts, list of pre-defined comment/percentage pairs
   vector <tuple <string, uint16_t, vector <tuple<string, uint8_t>>>>
-    asg_sections;
-    */
+  asg_sections;
+  */
   unordered_map <string, string> params; // map of all configuration parameters and their vals
 
   ConfigInfo(void);
   ConfigInfo(FILE *);
   ~ConfigInfo(void);
+  bool entry_exists(char *param);
+  bool entry_add(char *param, char *value);
+  bool entry_remove(char *param);
 } ConfigInfo_s;
 
 #endif
