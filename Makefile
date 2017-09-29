@@ -8,7 +8,9 @@ COMPILEOBJ = $(COMPILESRC:%.cpp=%.o)
 
 
 COMPILER = g++ -c
-COMPILERFLAGS = -Wall -Werror -ansi -pedantic -std=gnu++14
+INC =
+DEF = -D OVERRIDE_PRINTF
+COMPILERFLAGS = -Wall -Werror -ansi -pedantic -std=gnu++14 $(INC) $(DEF)
 LINKER = g++ -o
 LINKERFLAGS = -lm
 
@@ -23,3 +25,5 @@ clean:
 
 spotless: clean
 	rm -f $(EXE)
+
+.PHONY: clean spotless
