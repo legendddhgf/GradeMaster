@@ -6,6 +6,10 @@
 
 #include"AssignmentInfo.h"
 
+#ifdef OVERRIDE_PRINTF
+#define printf(...) normal_printf(__VA_ARGS__)
+#endif
+
 int main(int argc, char **argv) {
-  warn_printf("Don't you wish that it worked too?\n");
+  printf("Don't you wish that it worked too?\n");
 }

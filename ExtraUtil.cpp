@@ -26,7 +26,7 @@ void warn_printf(const char *fmt, ...) {
 void normal_printf(const char *fmt, ...) {
   va_list args;
   va_start(args, fmt);
-  printf(ANSI_COLOR_BLUE);
+  printf(ANSI_COLOR_CYAN);
   vprintf(fmt, args);
   printf(ANSI_COLOR_RESET);
   va_end(args);
