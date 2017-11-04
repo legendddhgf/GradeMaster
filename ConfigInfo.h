@@ -37,9 +37,9 @@ typedef struct ConfigInfo {
   ConfigInfo(void);
   ConfigInfo(FILE *);
   ~ConfigInfo(void);
-  bool entry_exists(char *param);
-  bool entry_add(char *param, char *value);
-  bool entry_remove(char *param);
+  bool entry_exists(string param);
+  bool entry_add(string param, string value);
+  bool entry_remove(string param);
 } ConfigInfo_s;
 
 #endif

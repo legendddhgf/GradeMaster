@@ -3,26 +3,28 @@
 #include <stdbool.h>
 
 #define ENTRY_ERASED 1
+#define CONFIG_INFO_BUFSIZE 1024
 
 // returns true if PARAM exists in an entry
-bool ConfigInfo_s::entry_exists(char *param) {
-  return params.find(string(param)) != params.end();
+bool ConfigInfo_s::entry_exists(string param) {
+  return params.find(param) != params.end();
 }
 
 // Inserts/replaces an entry with key: param and value: value
 // returns true if insertion/replacement was successful
-bool ConfigInfo_s::entry_add(char *param, char *value) {
+bool ConfigInfo_s::entry_add(string param, string value) {
   if(entry_exists(param)) {
-    // TODO: print a warning message
-    params.erase(string(param)) == ENTRY_ERASED;
+    warn_printf("Overwriting entry %s to have value %s\n", param.c_str(),
+        value.c_str());
+    params.erase(param);
   }
-  params.insert(pair<string, string>(string(param), string(value)));
+  params.insert(pair<string, string>(param, value));
   return entry_exists(param);
 }
 
 // returns true if the entry containing PARAM was successfully deleted
-bool ConfigInfo_s::entry_remove(char *param) {
-  return params.erase(string(param)) == ENTRY_ERASED;
+bool ConfigInfo_s::entry_remove(string param) {
+  return params.erase(param) == ENTRY_ERASED;
 }
 
 ConfigInfo_s::ConfigInfo() {
@@ -33,23 +35,29 @@ ConfigInfo_s::ConfigInfo(FILE *fp) {
   if (!fp) {
     eexit("File pointer passed to ConfigInfo() is null\n");
   }
-  char buf[256];
+  // TODO: do this entirely using strings and string.getline()
+  char buf[CONFIG_INFO_BUFSIZE];
   uint16_t line_count = 0;
-  while(fgets(buf, 255, fp)) { // break when finished with file
+  while(fgets(buf, CONFIG_INFO_BUFSIZE - 1, fp)) {
     line_count++;
-    if (buf[0] == '\n') continue; // it's an empty line
-    if (buf[strlen(buf) - 1] != '\n') {
+    if (buf[0] == '\n') continue; // skip empty lines
+    if (strlen(buf) >= CONFIG_INFO_BUFSIZE - 1) {
       eexit("Line of configuration file too long:\n\"%s\"\n", buf);
     }
-    char param[256];
-    char value[256];
+    // TODO: add comment capability
+    string param;
+    string value;
     char *tok = strtok(buf, ":");
-    // TODO: should this just skip the line? I am leaning on keeping like this
+    string tokstr;
+    // If it's an invalid format at this point, user should fix this
     if (!tok) eexit("Line %d: Invalid format\n", line_count);
-    sprintf(param, "%s", tok);
+    tokstr = string(tok);
+    param = trimmed(tokstr, string(" \r\n"));
+
     tok = strtok(NULL, ":");
     if (!tok) eexit("Line %d: Invalid format\n", line_count);
-    sprintf(value, "%s", tok);
+    tokstr = string(tok);
+    value = trimmed(tokstr, string(" \r\n"));
     if (!entry_add(param, value)) {
       eexit("Line %d: Unable to add entry\n", line_count);
     }
