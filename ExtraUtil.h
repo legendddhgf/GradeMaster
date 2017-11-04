@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdarg>
+#include <algorithm>
+
+using namespace std;
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -18,5 +21,8 @@ void eexit(const char *fmt, ...);
 void warn_printf(const char *fmt, ...);
 
 void normal_printf(const char *fmt, ...);
+
+// returns the trimmed version of this string based off delimiters
+string trimmed(string orig, string delimiters);
 
 #endif
