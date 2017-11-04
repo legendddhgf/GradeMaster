@@ -1,5 +1,7 @@
 #include "AssignmentInfo.h"
 
+#include "ExtraUtil.h"
+
 AssignmentInfo_s::AssignmentInfo(ConfigInfo_s *config) {
 // TODO: first finish making the ConfigInfo struct
 }
@@ -21,9 +23,8 @@ uint16_t AssignmentInfo_s::getAsgPts(void) {
 // return stored string for section name
 string AssignmentInfo_s::getSectionName(uint16_t secNum) {
   if (secNum >= asg_sections.size()) {
-    fprintf(stderr, "Invalid section %u: There are only %lu sections\n",
-        secNum, asg_sections.size()); // TODO: add debug print trace instead
-    exit(1); // TODO: part of the debug print trace please
+    eexit("Invalid section %u: There are only %lu sections\n",
+        secNum, asg_sections.size());
   }
   // return the section name portion of the tuple
   return get<TUPLE_SECTION_NAME>(asg_sections.at(secNum));
@@ -32,9 +33,8 @@ string AssignmentInfo_s::getSectionName(uint16_t secNum) {
 // return stored string for section name
 uint16_t AssignmentInfo_s::getSectionMaxPts(uint16_t secNum) {
   if (secNum >= asg_sections.size()) {
-    fprintf(stderr, "Invalid section %u: There are only %lu sections\n",
-        secNum, asg_sections.size()); // TODO: add debug print trace instead
-    exit(1); // TODO: part of the debug print trace please
+    eexit("Invalid section %u: There are only %lu sections\n",
+        secNum, asg_sections.size());
   }
   // return the section max points portion of the tuple
   return get<TUPLE_SECTION_MAXPTS>(asg_sections.at(secNum));
@@ -43,9 +43,8 @@ uint16_t AssignmentInfo_s::getSectionMaxPts(uint16_t secNum) {
 // return number of predef comments/%
 uint16_t AssignmentInfo_s::getSectionNumPredef(uint16_t secNum) {
   if (secNum >= asg_sections.size()) {
-    fprintf(stderr, "Invalid section %u: There are only %lu sections\n",
-        secNum, asg_sections.size()); // TODO: add debug print trace instead
-    exit(1); // TODO: part of the debug print trace please
+    eexit("Invalid section %u: There are only %lu sections\n",
+        secNum, asg_sections.size());
   }
   // return the number of predefined comment/percentage pairs from tuple
   return get<TUPLE_SECTION_PREDEFS>(asg_sections.at(secNum)).size();
@@ -55,9 +54,8 @@ uint16_t AssignmentInfo_s::getSectionNumPredef(uint16_t secNum) {
 tuple<string, uint8_t> AssignmentInfo_s::getSectionPredefInfo(uint16_t secNum,
     uint16_t predefNum) {
   if (secNum >= asg_sections.size()) {
-    fprintf(stderr, "Invalid section %u: There are only %lu sections\n",
-        secNum, asg_sections.size()); // TODO: add debug print trace instead
-    exit(1); // TODO: part of the debug print trace please
+    eexit("Invalid section %u: There are only %lu sections\n",
+        secNum, asg_sections.size());
   }
   // return the tuple containing the particular comment/% pair from main tuple
   return get<TUPLE_SECTION_PREDEFS>(asg_sections.at(secNum)).at(predefNum);
