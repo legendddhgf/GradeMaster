@@ -42,3 +42,4 @@ and as a remote client on the system where one prefers working.
 * Need to look into similarity benchmarks.
     * This isn't for cheat checking, which is already handled by moss (moss checking functionality can be added to this system though).
     * Rather, this is for coming up with a quantitative "hash" of grading section information to be used in comparing an existing section hash with that of a new section. Details of why this is necessary are spread throughout the above section.
+* an "exception" system which excludes certain things in certain cases (I feel like this will be an innate property of the system rather than an explicit structure/sub-library)
