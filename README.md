@@ -7,6 +7,7 @@ A grading system intended to make every aspect of grading more convenient
 * Have a remote mode where you can run the system as a server on the system with the files to be graded
 and as a remote client on the system where one prefers working.
     * will be looking into daemon() so the server side runs itself as a background process
+* Enable tracking of grader for every individual section per student
 * TBD
 
 ## Current system order of operations
