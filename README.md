@@ -6,6 +6,20 @@ A grading system intended to make every aspect of grading more convenient
 * Easy to use with complete documentation
 * Enable tracking of grader for every individual section per student
 * having prespecified comments with grades associated
+* scripts that not only can run if the are associated with your section responsibilities
+    * but also those that can run alongside to automatically populate grades and comments
+* csv export customizable format
+* grade.txt customizability
+* intermediate email routines (i.e: initially send out files submitted, then maybe cheaters, finally all grades)
+    * emails templatable
+* temp folder for students currently being graded (i.e under temp_graderID)
+* format in JSON (likely) or YAML
+* add assignment sections via internal CLI prompt rather than through manual file editing
+* critical / most configuration handled internally, some can be handled externally
+* enforce configuration is consistent?
+* customizable export of system configuration
+* split window to show output and terminal at the same time side by side
+* follow unix standard for interface?
 * TBD
 
 ## Current system order of operations
@@ -13,12 +27,15 @@ A grading system intended to make every aspect of grading more convenient
 1. Apply any command-line flags, overriding default configurations if applicable
 1. Clear id's for all pre-existing entries in the global section_info-id hash table by setting them to ~0 (TODO: why)
 1. For every section in the current assignment's configuration
-    1. Perform a check to see if there is a saved section that matches the one being observed, if not then an entry is added to the global section_info-id hash table accordingly
+    1. Perform a check to see if there is a saved section that matches the one being observed
+    1. if not then an entry is added to the global section_info-id hash table accordingly
     1. This id becomes the index of the new entry for this section created in the assignment sections vector
 1. System in shell mode
     1. Further details TBD
 
 ## Ideas undergoing consideration (No form to this section whatsoever)
+* Think about how to effectively reflect grades (particularly after regrades) in the system
+* version control?
 * Have a remote mode where you can run the system as a server on the system with the files to be graded
 and as a remote client on the system where one prefers working.
     * will be looking into daemon() so the server side runs itself as a background process
@@ -45,5 +62,3 @@ and as a remote client on the system where one prefers working.
     * This isn't for cheat checking, which is already handled by moss (moss checking functionality can be added to this system though).
     * Rather, this is for coming up with a quantitative "hash" of grading section information to be used in comparing an existing section hash with that of a new section. Details of why this is necessary are spread throughout the above section.
 * an "exception" system which excludes certain things in certain cases (I feel like this will be an innate property of the system rather than an explicit structure/sub-library)
-* August's ideas:
-    * 
