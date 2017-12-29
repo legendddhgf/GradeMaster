@@ -7,11 +7,11 @@ COMPILESRC = $(MAINSRC) $(COMPONENTSSRC)
 COMPILEOBJ = $(COMPILESRC:%.cpp=%.o)
 
 
-COMPILER = g++ -c
+COMPILER = $(CXX) -c
 INC =
 DEF = -D OVERRIDE_PRINTF
 COMPILERFLAGS = -Wall -Werror -ansi -pedantic -std=gnu++14 $(INC) $(DEF)
-LINKER = g++ -o
+LINKER = $(CXX) -o
 LINKERFLAGS = -lm
 
 EXE = GradeMaster

@@ -1,5 +1,9 @@
 # GradeMaster
+
 A grading system intended to make every aspect of grading more convenient
+
+[![Gitter](https://img.shields.io/gitter/room/GradeMaster/Lobby.js.svg)](https://gitter.im/GradeMaster/Lobby)
+[![Travis](https://img.shields.io/travis/legendddhgf/GradeMaster.svg)](https://travis-ci.org/legendddhgf/GradeMaster)
 
 ## Expected features
 * System entirely configurable without recompiling / changing the code

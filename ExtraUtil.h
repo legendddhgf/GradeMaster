@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <cstdarg>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
