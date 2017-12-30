@@ -2,8 +2,9 @@
 
 A grading system intended to make every aspect of grading more convenient
 
-[![Gitter](https://img.shields.io/gitter/room/GradeMaster/Lobby.js.svg)](https://gitter.im/GradeMaster/Lobby)
-[![Travis](https://img.shields.io/travis/legendddhgf/GradeMaster.svg)](https://travis-ci.org/legendddhgf/GradeMaster)
+[![Gitter](https://img.shields.io/gitter/room/GradeMaster/Lobby.js.svg?logo=gitter-white)](https://gitter.im/GradeMaster/Lobby)
+[![Travis](https://img.shields.io/travis/legendddhgf/GradeMaster.svg?logo=travis)](https://travis-ci.org/legendddhgf/GradeMaster)
+[![Codacy](https://img.shields.io/codacy/grade/be69218513884a199d6b5e354647c1f6.svg)](https://www.codacy.com/app/4U6U57/GradeMaster)
 
 ## Expected features
 * System entirely configurable without recompiling / changing the code

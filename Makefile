@@ -17,6 +17,7 @@ LINKERFLAGS = -lm
 EXE = GradeMaster
 
 GradeMaster: $(COMPILESRC)
+	git submodule update --init --recursive
 	$(COMPILER) $(COMPILERFLAGS) $(COMPILESRC)
 	$(LINKER) $(EXE) $(LINKERFLAGS) $(COMPILEOBJ)
 
