@@ -22,7 +22,7 @@ A grading system intended to make every aspect of grading more convenient
 * follow unix standard for interface?
 * TBD
 
-## Current system order of operations
+## Expected system order of operations
 1. Begin loading information from configuration files
 1. Apply any command-line flags, overriding default configurations if applicable
 1. Clear id's for all pre-existing entries in the global section_info-id hash table by setting them to ~0 (TODO: why)
@@ -32,6 +32,26 @@ A grading system intended to make every aspect of grading more convenient
     1. This id becomes the index of the new entry for this section created in the assignment sections vector
 1. System in shell mode
     1. Further details TBD
+
+## Current Progress (described both current implementation and near-future planned implementation)
+* Structure for containing student info
+    * holds full name
+    * holds an abbreviated name (in UCSC this will probably be a cruzID of the student)
+    * a vector of grades represented as percentages for every section (there will be as many entries in the vector as there are sections) or ~0 (255) as ungraded. Note: this may have to be changed slightly to reflect more degrees of specificity in grades (i.e by using floating point vars)
+    * TODO: potentially another vector to mark which grader did each section (since sometimes 2 graders may work on the same section)
+* Structure for containing grader info
+    * holds full name
+    * holds an abbreviated name (in UCSC this will probably be a cruzID of the student)
+    * holds a bitvector with a 1 marked for every section the grader is responsible for (contains an entry for every section). Note this may be changed especially in accordance to requirements for allowing multiple graders to grade the same section although I think this may be handled with a vector of graders for each section in the student info structure.
+* Structure for containing configuration info (This will contain all information required for GradeMaster to function). Currently undergoing heavy changes under @4U6U57
+    * Since configuration changes are common and may even change over the course of versions, it was determined that a HashTable would be the most reasonable structure for containing all configuration options which will likely be of two forms:
+        * option & <TRUE|FALSE>
+        * param & <VAL>
+    * The configuration info will mostly be populated through the GradeMaster interface as we are trying to prevent the manual editing of files as much as possible
+* A Makefile
+    * It's fancy?
+* a BitVector data structure
+    * it's a vector of bits
 
 ## Ideas undergoing consideration (No form to this section whatsoever)
 * Think about how to effectively reflect grades (particularly after regrades) in the system
