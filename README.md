@@ -6,7 +6,7 @@ A grading system intended to make every aspect of grading more convenient
 * Easy to use with complete documentation
 * Enable tracking of grader for every individual section per student
 * having prespecified comments with grades associated
-* scripts that not only can run if the are associated with your section responsibilities
+* scripts that not only can run if they are associated with your section responsibilities
     * but also those that can run alongside to automatically populate grades and comments
 * csv export customizable format
 * grade.txt customizability
@@ -52,6 +52,11 @@ A grading system intended to make every aspect of grading more convenient
     * It's fancy?
 * a BitVector data structure
     * it's a vector of bits
+* A interface
+    * Being worked on by @4U6U57
+* A file containing the main functionality (will be called by interface)
+    * Being worked on by @legendddhgf
+* A main file to call everything else
 
 ## Ideas undergoing consideration (No form to this section whatsoever)
 * Think about how to effectively reflect grades (particularly after regrades) in the system
