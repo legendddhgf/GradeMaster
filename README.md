@@ -59,12 +59,9 @@ A grading system intended to make every aspect of grading more convenient
 * A main file to call everything else
 
 ## Ideas undergoing consideration (No form to this section whatsoever)
-* Think about how to effectively reflect grades (particularly after regrades) in the system
 * version control?
-* Have a remote mode where you can run the system as a server on the system with the files to be graded
-and as a remote client on the system where one prefers working.
-    * will be looking into daemon() so the server side runs itself as a background process
-* How to handle midway changes to sections.
+* Have remote/client modes
+* Think about how to effectively reflect grades (particularly after regrades) in the system: currently considering hashing all section info into ID
     * It's one thing to change the name but if the section is unrelated, then there are a number of options:
         * delete the grades for the section if it's information is removed (dangerous, what if somebody was just trying to add a section and deleted a bunch of their work)
         * save the grades for the section even if it's removed (now you end up having a bunch of files that may not be necessary but there are other complications)
@@ -75,11 +72,11 @@ and as a remote client on the system where one prefers working.
             * Currently considering: internally automatically assign an id to each section. Have a global id counter for every assignment. Use a hash map between sec_id and percentage per section.
             * However, what allows the system to uniquely identify a section?
                 * It would be ridiculous to require the user to number them when that can be done automatically.
-                * At the same time, if we would like to allow a section to have it's descriptions modified while keeping saved grades intact, how can one "uniquely identify" a given section?
+                * At the same time, if we would like to allow a section to have its descriptions modified while keeping saved grades intact, how can one "uniquely identify" a given section?
                 * Currently considering: for every section the system observes in the configuration file that hasn't before been considered, it will automatically attempt to determine its status
                     * there will be a global hash map of sec_ids to hashes of the section information, if something doesn't match existing info, it will auto determine
                         * note that this hash map is a possible solution to the problem of having grades pointing to invalid sections on delete.
-                    * After auto determine is completed, it will prompt the user confirmation.
+                    * After auto determine is completed, it will prompt the user for confirmation.
                     * For example, a similarity algorithm can be run to determine if the section is actually just a string modification of a previous section.
                     * In the case that the user prompts that it is in fact not a modification of an old section, options such as "new section", or "modification of other section" can be prompted.
                     * In the end, the aforementioned global hash map of "sec_ids to hashes of section information" can simply be updated
